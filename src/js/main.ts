@@ -15,20 +15,26 @@ form.addEventListener('submit', (event) => {
   event.preventDefault();
 
   //Hämtar värde från input
-  const task = input.value;
+  const task = input.value.trim();
   //Konvertera sträng till nummer samt säkerställ att det är 1,2 eller 3.
   let priority = Number(prioritySelect.value) as 1 | 2 | 3;
 
-  //Kontrollera om metod returnerar true
-  if (toDoList.addToDo(task, priority)) {
-    //Rensa textfält
-    input.value = '';
-    //Kör funktion som uppdaterar DOM med data från array
-    updateToDoList();
+  //Kontrollera att task inte är tom
+  if(task) {
+    //Kontrollera om metod returnerar true
+    if (toDoList.addToDo(task, priority)) {
+      //Rensa textfält
+      input.value = '';
+      //Kör funktion som uppdaterar DOM med data från array
+      updateToDoList();
+    }
+    //Kör metod för att spara i localstorage
+    toDoList.saveToLocalStorage();
+  } else {
+      alert('Ingen uppgift angiven');
   }
 
-  //Kör metod för att spara i localstorage
-  toDoList.saveToLocalStorage();
+  
 });
 
 //Funktion för att uppdatera DOM med data från ToDoList-arrayen
