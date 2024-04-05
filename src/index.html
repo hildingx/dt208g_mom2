@@ -3,18 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Att göra-listan</title>
+    <link rel="stylesheet" href="css/styles.css">
     <script src="js/main.ts" type="module"></script>
 </head>
 <body>
     <header>
-
+      <h1>Att göra-listan</h1>
     </header>
     <main>
-
+        <form id="toDoForm">
+            <label for="toDoInput">Att göra:</label>
+            <input type="text" id="toDoInput" placeholder="Skriv in ny uppgift..." required>
+            <label for="prioritySelect">Prioritet:</label>
+            <select id="prioritySelect">
+                <option value="1">Hög</option>
+                <option value="2">Medel</option>
+                <option value="3">Låg</option>
+            </select>
+            <button type="submit" class="button submit-btn">Lägg till</button>
+        </form>
+        <ul id="toDoList"></ul>
     </main>
     <footer>
-        
+      Alexander Hilding
     </footer>
 </body>
 </html>
